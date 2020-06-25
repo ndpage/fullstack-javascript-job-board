@@ -1,14 +1,11 @@
 import React from 'react';
-import './App.css'
-import Typography from '@material-ui/core/Typography'
 
-export default function Jobs()
+export default function Job({job})
 {
     return(
-        <div> 
-            <Typography variant="h1">
-                Job Title
-            </Typography>
+        <div className="job">
+            <div class="job-title">{job.title}</div> 
+            <div class="job-company">{job.company}</div> 
         </div>
     )
 }
