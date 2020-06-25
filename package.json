@@ -1,0 +1,25 @@
+{
+  "name": "fullstack-javascript-job-board",
+  "version": "1.0.0",
+  "description": "Full-Stack JavaScript web app to find entry level developer jobs. This project is a tutorial from freeCodeCamp.org. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndpage/fullstack-javascript-job-board.git"
+  },
+  "keywords": [
+    "full-stack",
+    "javascript",
+    "web",
+    "app"
+  ],
+  "author": "Nathan Page",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndpage/fullstack-javascript-job-board/issues"
+  },
+  "homepage": "https://github.com/ndpage/fullstack-javascript-job-board#readme"
+}
