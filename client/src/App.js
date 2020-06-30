@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Entry Level Software Engineer Job
+        Entry Level Software Engineer Jobs
       </header>
 
       <Jobs jobs={mockJobs} />
