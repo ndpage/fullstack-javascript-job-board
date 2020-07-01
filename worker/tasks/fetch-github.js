@@ -1,4 +1,3 @@
-
 var fetch = require('node-fetch');
 
 const baseURL = 'https://jobs.github.com/positions.json'
@@ -10,17 +9,14 @@ const allJobs = [];
     let onPage = 0;
 
     while(resultCount > 0){
-        const response = await fetch(`${baseURL}?page=${onPage}`); //
-        const jobs = await response.json();
+        const res = await fetch(`${baseURL}?page=${onPage}`); //
+        const jobs = await res.json();
+        resultCount = jobs.length; // Asign the number of found jobs to resultCount to check while stop condition
         allJobs.push(...jobs);
-
-        resultCount = allJobs.length;
-        onPage++;
+        onPage++; //increment page number for next loop
+        console.log(`${jobs.length} on page ${onPage}`);
     }
-    console.log('Got ', allJobs.length, ' jobs')
-    
+    console.log('Got', allJobs.length, 'jobs on', --onPage, 'pages');
 }
-
-fetchGitHub();
 
 module.exports();
