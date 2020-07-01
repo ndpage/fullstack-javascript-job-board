@@ -4,9 +4,8 @@ var fetch = require('node-fetch');
 const redis = require("redis");
 const client = redis.createClient();
 
-// Promisify redis get functions 
+// Promisify redis database get functions 
 const { promisify } = require("util");
-// const getAsync = promisify(client.get).bind(client);
 const setAsync = promisify(client.set).bind(client);
 
 const baseURL = 'https://jobs.github.com/positions.json'
@@ -14,7 +13,7 @@ const baseURL = 'https://jobs.github.com/positions.json'
 async function fetchGitHub(){
 
     // Fetch all jobs on GitHub
-const allJobs = [];
+    const allJobs = [];
     let resultCount = 1;
     let onPage = 0;
 
@@ -27,6 +26,7 @@ const allJobs = [];
         onPage++; //increment page number for next loop
     }
     console.log('Got', allJobs.length, 'total jobs');
+
     // filter algorithm for removing senior level jobs
     const jrJobs = allJobs.filter(job => {
         const jobTitle = job.title.toLowerCase();
@@ -42,7 +42,7 @@ const allJobs = [];
     );
 
     console.log('Got', jrJobs.length, 'junior jobs');
-    // Set data in redis
+    // Set data in redis database
     const success = await setAsync('GitHub', JSON.stringify(jrJobs));
     console.log({success});
 }
