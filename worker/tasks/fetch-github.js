@@ -13,6 +13,7 @@ const baseURL = 'https://jobs.github.com/positions.json'
 
 async function fetchGitHub(){
 
+    // Fetch all jobs on GitHub
 const allJobs = [];
     let resultCount = 1;
     let onPage = 0;
@@ -25,9 +26,24 @@ const allJobs = [];
         console.log(`${jobs.length} on page ${onPage}`);
         onPage++; //increment page number for next loop
     }
-    
-    console.log('Got', allJobs.length, 'jobs on', --onPage, 'pages');
-    const success = await setAsync('GitHub', JSON.stringify(allJobs));
+    console.log('Got', allJobs.length, 'total jobs');
+    // filter algorithm for removing senior level jobs
+    const jrJobs = allJobs.filter(job => {
+        const jobTitle = job.title.toLowerCase();
+        
+        if(
+            jobTitle.includes('senior')||jobTitle.includes('manager')||jobTitle.includes('principle')||jobTitle.includes('sr.')||jobTitle.includes('architect')
+        ){
+            return false;
+        }
+
+        return true;
+        }
+    );
+
+    console.log('Got', jrJobs.length, 'junior jobs');
+    // Set data in redis
+    const success = await setAsync('GitHub', JSON.stringify(jrJobs));
     console.log({success});
 }
 module.exports = fetchGitHub;
