@@ -6,8 +6,6 @@
 var CronJob = require('cron').CronJob;
 const fetchGitHub = require('./tasks/fetch-github');
 
-var getJob = new CronJob('* * * * *', function() {
-  console.log('Fetching GitHub job postings...');
-  fetchGitHub;
-}, null, true, 'America/Los_Angeles');
+var getJob = new CronJob('* * * * *', fetchGitHub, null, true, 'America/Los_Angeles');
+console.log("Fetching GitHub jobs...");
 getJob.start();
