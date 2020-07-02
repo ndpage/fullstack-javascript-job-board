@@ -32,7 +32,7 @@ async function fetchGitHub(){
         const jobTitle = job.title.toLowerCase();
         
         if(
-            jobTitle.includes('senior')||jobTitle.includes('manager')||jobTitle.includes('principle')||jobTitle.includes('sr.')||jobTitle.includes('architect')
+            jobTitle.includes('lead')||jobTitle.includes('senior')||jobTitle.includes('manager')||jobTitle.includes('principle')||jobTitle.includes('sr.')||jobTitle.includes('architect')
         ){
             return false;
         }
@@ -46,4 +46,5 @@ async function fetchGitHub(){
     const success = await setAsync('GitHub', JSON.stringify(jrJobs));
     console.log({success});
 }
+
 module.exports = fetchGitHub;
