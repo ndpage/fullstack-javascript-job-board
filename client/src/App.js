@@ -1,14 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Jobs from './Jobs.js'
-
-
-const mockJobs = [
-  {title: 'SWE 1', company:'Google'},
-  {title: 'SDE 1', company:'Facebook'},
-  {title: 'Software Engineer 1', company:'Amazon'}
-];
 
 const JOB_API_URL = 'http://localhost:3001/jobs'; //define the job api url
 
@@ -32,9 +24,9 @@ React.useEffect(()=>{
       </header>
 
       <Jobs jobs={jobList} />
-    
     </div>
-  );
+
+  );//end of return funtion
 }
 
 export default App;
