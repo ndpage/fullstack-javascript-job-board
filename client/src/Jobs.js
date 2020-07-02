@@ -7,7 +7,7 @@ export default function Jobs({jobs})
 {
     return(
         <div className="jobs"> 
-            <Typography variant="h3">
+            <Typography variant="h4" component="h1">
                 Jobs List
             </Typography>
 

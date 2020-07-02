@@ -1,3 +1,7 @@
+body {
+  margin: 0px 50px;
+}
+
 .App {
   text-align: center;
 }
@@ -37,20 +41,12 @@
   }
 }
 .jobs{  
-  background-color: whitesmoke;
+  background-color: white;
 }
 .job{
-  width: 80%;
-  margin: 10px 0px;
-  padding: 5px 0px;
+  margin: 20px 5px;
+  pading: 20px 0px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-}
-.job-title{
-  text-align: left;
-}
-
-.job-company{
-  font-style: italic;
+  justify-content: space-between;
 }
