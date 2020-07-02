@@ -56,7 +56,6 @@ export default function Jobs({jobs})
                 </Button>
                 }
             />
-            
             {
                 jobsOnPage.map(
                     job => <Job job={job} />
@@ -64,7 +63,6 @@ export default function Jobs({jobs})
                 }
         
     </div>
-   
-   
+
     );
 }
