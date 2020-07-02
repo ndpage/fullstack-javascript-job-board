@@ -35,33 +35,33 @@ export default function Jobs({jobs})
             <Typography variant="h6" component="h1">
                 Found {numJobs} jobs
             </Typography>
+            <div> 
+                Page {activeStep + 1} of {numPages}
+            </div>
+            <MobileStepper
+                variant="progress"
+                steps={numPages}
+                position="static"
+                activeStep={activeStep}
+                nextButton={
+                <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
+                    Next
+                    <KeyboardArrowRight />
+                </Button>
+                }
+                backButton={
+                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    <KeyboardArrowLeft />
+                    Back
+                </Button>
+                }
+            />
             
             {
                 jobsOnPage.map(
                     job => <Job job={job} />
-                )
-            }
-        <div> 
-            Page {activeStep + 1} of {numPages}
-        </div>
-        <MobileStepper
-            variant="progress"
-            steps={numPages}
-            position="static"
-            activeStep={activeStep}
-            nextButton={
-            <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-                Next
-                <KeyboardArrowRight />
-            </Button>
-            }
-            backButton={
-            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                <KeyboardArrowLeft />
-                Back
-            </Button>
-            }
-        />
+                    )
+                }
         
     </div>
    
