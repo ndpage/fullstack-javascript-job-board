@@ -23,7 +23,7 @@ React.useEffect(()=>{
         Entry Level Software Engineer Jobs
       </header>
 
-      <Jobs jobs={jobList} />
+      <Jobs className="jobs" jobs={jobList} />
     </div>
 
   );//end of return funtion
