@@ -42,11 +42,7 @@ export default function Jobs({jobs})
         <div className="jobs"> 
             <JobModal open={open} job={selectedJob} handleClose={handleClose}/>
 
-            <Typography variant="h4" component="h1">
-                Jobs List
-            </Typography>
-
-            <Typography variant="h6" component="h1">
+            <Typography variant="h5" component="h1">
                 Found {numJobs} jobs
             </Typography>
             <div> 

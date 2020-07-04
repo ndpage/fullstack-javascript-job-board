@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
   
-  export default function JobMoal({job, open, handleClose}) {
+  export default function JobModal({job, open, handleClose}) {
     if(!job.title){
         return <div /> 
     }
