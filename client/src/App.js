@@ -20,7 +20,7 @@ React.useEffect(()=>{
   return (
     <div className="App">
       <header className="App-header">
-        Entry Level Software Engineer Jobs
+        Entry Level Jobs
       </header>
 
       <Jobs className="jobs" jobs={jobList} />
