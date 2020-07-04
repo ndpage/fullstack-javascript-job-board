@@ -28,7 +28,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-              {job.title}-{job.company}
+              {job.title}<br/>
+              {job.company}
               <img src={job.company_logo} className={'job-modal-logo'} alt="company logo"/>
           </DialogTitle>
           <DialogContent>
