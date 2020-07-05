@@ -18,6 +18,7 @@ export default function Jobs({jobs})
     const [open, setOpen] = React.useState(false);
     const [selectedJob, selectJob] = React.useState({});
     const handleClickOpen = () => {
+        
       setOpen(true);
     };
     const handleClose = () => {
@@ -68,7 +69,7 @@ export default function Jobs({jobs})
             />
             {
                 jobsOnPage.map(
-                    (job, i) => <Job key={i} job={job} onClick={() => {handleClickOpen();  selectJob(job)}}/>
+                    (job, i) => <Job key={i} job={job} onClick={() => {handleClickOpen(); selectJob(job)}}/>
                     )
                 }
     </div>
