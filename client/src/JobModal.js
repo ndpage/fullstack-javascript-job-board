@@ -30,7 +30,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
           <DialogTitle id="alert-dialog-slide-title">
               {job.title}<br/>
               {job.company}
-              <img src={job.company_logo} className={'job-modal-logo'} alt="company logo"/>
+              <a href={job.company_url} target="_blank" rel="noopener noreferrer"> 
+                <img src={job.company_logo} className={'job-modal-logo'} alt="company logo"/>
+              </a>
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
@@ -46,8 +48,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
               Close
             </Button>
 
-            <a href={job.url}> 
-                <Button onClick={handleClose} color="primary">
+            <a href={job.url}  target="_blank" rel="noopener noreferrer" alt="Apply to job"> 
+                <Button color="primary">
                 Apply
                 </Button>
             </a>
