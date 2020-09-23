@@ -68,10 +68,10 @@ export default function Jobs({jobs})
                 }
             />
             {
-                jobsOnPage.map(
-                    (job, i) => <Job key={i} job={job} onClick={() => {handleClickOpen(); selectJob(job)}}/>
-                    )
-                }
+            jobsOnPage.map(
+                (job, i) => <Job key={i} job={job} onClick={() => {handleClickOpen(); selectJob(job)}}/>
+                )
+            }
     </div>
     );
 }

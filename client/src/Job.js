@@ -13,7 +13,7 @@ export default function Job({job, onClick})
                 <Typography variant="h6">{job.company}</Typography>
                 <Typography variant="h6">{job.location}</Typography>
             </div>
-            <div>   
+            <div> 
                 <Typography> Posted {job.created_at.split(' ').slice(0,3).join(' ')}</Typography>
             </div>
         </Paper>
