@@ -29,7 +29,8 @@ export default function Jobs({jobs})
     const numJobs = jobs.length;
     const numPages = Math.ceil(numJobs/50);
     const [activeStep, setActiveStep] = React.useState(0);
-    const jobsOnPage = jobs.slice(activeStep*50,activeStep*50+50); //pagination to 50 jobs per page
+    const numOfJobsToShow = 10;
+    const jobsOnPage = jobs.slice(activeStep*numOfJobsToShow,activeStep*numOfJobsToShow+numOfJobsToShow); //pagination to 50 jobs per page
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -46,8 +47,10 @@ export default function Jobs({jobs})
             <Typography variant="h5" component="h1">
                 Found {numJobs} jobs
             </Typography>
-            <div> 
-                Page {activeStep + 1} of {numPages}
+            <div>
+                <p> 
+                    Page {activeStep + 1} of {numPages}
+                </p> 
             </div>
             <MobileStepper
                 variant="progress"
