@@ -13,7 +13,6 @@ const JOB_API_URL = 'http://localhost:3001/api/jobs'; //define the api URL
 async function fetchJobs(updateCB){
   const res = await fetch(JOB_API_URL); //fetch() is a built-in browser function
   const json = await res.json();  // wait for the json response
-  // console.log({json});
   updateCB(json);
 }
 
@@ -28,7 +27,14 @@ React.useEffect(()=>{
       <header className="App-header">
         Entry Level Jobs
       </header>
-      <Jobs className="jobs" jobs={jobList} />
+      <main>
+        <Jobs className="jobs" jobs={jobList} />
+      </main> 
+      <footer> 
+        <p> 
+          Copyright 2020 Nathan Page
+        </p>
+      </footer>
     </div>
 
   );//end of return funtion
