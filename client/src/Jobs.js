@@ -27,9 +27,9 @@ export default function Jobs({jobs})
 
     // Pagination
     const numJobs = jobs.length;
-    const numPages = Math.ceil(numJobs/50);
-    const [activeStep, setActiveStep] = React.useState(0);
     const numOfJobsToShow = 10;
+    const numPages = Math.ceil(numJobs/numOfJobsToShow);
+    const [activeStep, setActiveStep] = React.useState(0);
     const jobsOnPage = jobs.slice(activeStep*numOfJobsToShow,activeStep*numOfJobsToShow+numOfJobsToShow); //pagination to 50 jobs per page
 
     const handleNext = () => {
