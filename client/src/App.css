@@ -9,7 +9,9 @@ body {
 
 .App {
   text-align: center;
-  
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -38,19 +40,11 @@ body {
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .jobs{  
   background-color: navajowhite;
   padding: 50px 30px;
-  margin: 20px;
+  margin: 20px auto;
+  max-width: 70%;
 }
 .job{
   margin: 10px 0px;
