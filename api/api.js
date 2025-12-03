@@ -18,7 +18,9 @@ var redis = require('redis');
 var client = redis.createClient();
 
 // Connect to Redis (required in v4+)
-client.connect().catch(console.error);
+client.connect().catch((error) => {
+    console.error('Failed to connect to Redis:', error);
+});
 
 app.get('/api/jobs', async(req, res) => {
     try {

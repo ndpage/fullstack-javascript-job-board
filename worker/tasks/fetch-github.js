@@ -5,7 +5,9 @@ const redis = require("redis");
 const client = redis.createClient();
 
 // Connect to Redis (required in v4+)
-client.connect().catch(console.error);
+client.connect().catch((error) => {
+    console.error('Failed to connect to Redis:', error);
+});
 
 const baseURL = 'https://jobs.github.com/positions.json'
 
