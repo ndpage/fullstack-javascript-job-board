@@ -2,11 +2,29 @@
 
 var fetch = require('node-fetch');
 const redis = require("redis");
-const client = redis.createClient();
+const client = redis.createClient({
+    socket: {
+        host: process.env.REDIS_HOST || 'localhost',
+        port: process.env.REDIS_PORT || 6379
+    },
+    password: process.env.REDIS_PASSWORD || undefined
+});
 
-// Promisify redis database get functions 
-const { promisify } = require("util");
-const setAsync = promisify(client.set).bind(client);
+// Handle Redis connection errors
+client.on('error', (err) => {
+    console.error('Redis Client Error', err);
+});
+
+// Connect to Redis
+(async () => {
+    try {
+        await client.connect();
+        console.log('Worker connected to Redis successfully');
+    } catch (err) {
+        console.error('Worker failed to connect to Redis:', err);
+        process.exit(1);
+    }
+})();
 
 const baseURL = 'https://jobs.github.com/positions.json'
 
@@ -43,7 +61,7 @@ async function fetchGitHub(){
 
     console.log('Got', jrJobs.length, 'junior jobs');
     // Set data in redis database
-    const success = await setAsync('GitHub', JSON.stringify(jrJobs));
+    const success = await client.set('GitHub', JSON.stringify(jrJobs));
     console.log({success});
 }
 
