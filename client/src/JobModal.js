@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import DOMPurify from 'dompurify';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -16,6 +17,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     if(!job.title){
         return <div /> 
     }
+    
+    // Sanitize the HTML description to prevent XSS attacks
+    const sanitizedDescription = DOMPurify.sanitize(job.description || '', {
+        ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+        ALLOWED_ATTR: ['href', 'target', 'rel']
+    });
+    
     return (
       <div>
        
@@ -36,11 +44,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-            <div>
-                {require('html-react-parser')(
-                    `${job.description}`
-                )}
-            </div>
+            <div dangerouslySetInnerHTML={{ __html: sanitizedDescription }} />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
