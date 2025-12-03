@@ -144,6 +144,18 @@ Added `dump.rdb` to `.gitignore` to prevent Redis database dumps from being comm
 4. **Use HTTPS**: In production, always use HTTPS for all connections
 5. **Enable Redis authentication**: Set a strong password for Redis in production environments
 
+### Node.js Version Compatibility
+
+This project was originally designed for Node.js v14. When running on Node.js v17+ and using the older react-scripts (v3.4.1), you may encounter build errors due to OpenSSL changes.
+
+**Workaround for development**: Use Node.js v14 or v16, or set the `NODE_OPTIONS` environment variable:
+```bash
+export NODE_OPTIONS=--openssl-legacy-provider
+npm run build
+```
+
+**Recommended**: Upgrade to react-scripts v5.x or later for full Node.js v18+ compatibility (this is a breaking change outside the scope of this security review).
+
 ### Deployment Checklist
 
 Before deploying to production:

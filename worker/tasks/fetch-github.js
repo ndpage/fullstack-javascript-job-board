@@ -17,7 +17,13 @@ client.on('error', (err) => {
 
 // Connect to Redis
 (async () => {
-    await client.connect();
+    try {
+        await client.connect();
+        console.log('Worker connected to Redis successfully');
+    } catch (err) {
+        console.error('Worker failed to connect to Redis:', err);
+        process.exit(1);
+    }
 })();
 
 const baseURL = 'https://jobs.github.com/positions.json'

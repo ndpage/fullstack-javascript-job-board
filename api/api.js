@@ -39,15 +39,18 @@ client.on('error', (err) => {
 
 // Connect to Redis
 (async () => {
-    await client.connect();
+    try {
+        await client.connect();
+        console.log('Connected to Redis successfully');
+    } catch (err) {
+        console.error('Failed to connect to Redis:', err);
+        process.exit(1);
+    }
 })();
-
-const { promisify } = require("util");
-const getAsync = promisify(client.get).bind(client);
 
 app.get('/api/jobs', async(req, res) => {
     try {
-        const jobs = await getAsync('GitHub');
+        const jobs = await client.get('GitHub');
         
         if (!jobs) {
             return res.status(404).json({ error: 'No jobs found' });
